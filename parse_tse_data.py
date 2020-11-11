@@ -12,7 +12,7 @@ def get_arguments():
     """
 
     # Creates the ArgumentParser
-    parser = argparse.ArgumentParser(usage='Extracts desired columns from a .csv file.')
+    parser = argparse.ArgumentParser(usage='Parses TSE data into a more readable .csv file.')
 
     parser.add_argument('input_file', help='Input file identifier (.csv)', type=str)
 
@@ -31,7 +31,8 @@ if __name__ == '__main__':
     delimiter = args.delimiter
 
     # Defines the columns to be extracted (will be fixed for now)
-    columns = ['SG_UE', 'NM_UE', 'DS_CARGO', 'SQ_CANDIDATO', 'NR_CANDIDATO', 'NM_CANDIDATO', 'NR_CPF_CANDIDATO', 'DT_NASCIMENTO', 'NM_EMAIL']
+    columns = ['SG_UE', 'NM_UE', 'DS_CARGO', 'SQ_CANDIDATO', 'NR_CANDIDATO',
+               'NM_CANDIDATO', 'NR_CPF_CANDIDATO', 'DT_NASCIMENTO', 'NM_EMAIL']
 
     # Loads the desired .csv file into a dataframe
     df = pd.read_csv(input_file, delimiter=delimiter, encoding='ISO-8859-1')
