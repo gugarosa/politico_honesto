@@ -1,3 +1,4 @@
+import json
 import pandas as pd
 
 
@@ -21,3 +22,26 @@ def load_csv(input_path, delimiter):
     print('File loaded.')
 
     return df
+
+
+def load_json(input_path):
+    """Loads a .json file given an input path.
+
+    Args:
+        input_path (str): Input path to the .json file.
+
+    Returns:
+        A dictionary holding the loaded .json file.
+
+    """
+
+    print(f'Loading file from: {input_path}')
+
+    # Opens the input file
+    with open(input_path, 'r') as input_file:
+        # Loads the .json
+        data = json.load(input_file)
+
+    print('File loaded.')
+
+    return data

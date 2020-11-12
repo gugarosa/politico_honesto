@@ -11,7 +11,6 @@ def get_arguments():
 
     """
 
-    # Creates the ArgumentParser
     parser = argparse.ArgumentParser(usage='Crawls information from a candidate.')
 
     parser.add_argument('id_city', help='City identifier', type=str)
