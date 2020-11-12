@@ -53,4 +53,4 @@ if __name__ == '__main__':
     print(f"Nome Completo: {data['nomeCompleto']}")
     print(f"Nome da Mãe: {mother_name}")
     print(f"Data de Nascimento: {datetime.fromtimestamp(data['dataDeNascimento']/1000).strftime('%d/%m/%Y')}")
-    print(f"Total de Bens: {data['cpf']}")
+    print(f"Total de Bens: {data['totalDeBens']}")
