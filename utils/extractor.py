@@ -1,4 +1,8 @@
+import os
+import re
 import time
+
+from pdfminer.high_level import extract_text
 from selenium import webdriver
 
 
@@ -34,3 +38,72 @@ def crawl_candidate(id_city, id_candidate, sleep_time=5):
         writer.write(data)
 
     print(f'Information dumped to: {output_file}')
+
+
+def extract_pdf(url, timeout=3):
+    """Extracts a .pdf file from given URL.
+
+    Args:
+        url (str): URL of the .pdf file to be extracted.
+        timeout (int): Timeout between operations (in seconds).
+
+    """
+
+    print(f'Extracting PDF from: {url}')
+
+    # Creates a webdriver profile and defines some base preferences
+    profile = webdriver.FirefoxProfile()
+    profile.set_preference('browser.download.folderList', 2)
+    profile.set_preference('browser.download.dir', os.getcwd())
+    profile.set_preference('browser.download.manager.closeWhenDone', True)
+    profile.set_preference('browser.download.manager.showWhenStarting', False)
+    profile.set_preference('browser.download.manager.useWindow', False)
+    profile.set_preference('browser.helperApps.neverAsk.saveToDisk', 'application/pdf')
+    profile.set_preference('plugin.disable_full_page_plugin_for_types', 'application/pdf')
+    profile.set_preference('pdfjs.disabled', True)
+
+    # Instantiates the webdriver with the defined profile
+    driver = webdriver.Firefox(firefox_profile=profile)
+
+    # Sets a timeout when loading pages
+    # This is a caveat for multiple files download
+    driver.set_page_load_timeout(timeout)
+
+    # Tries to execute the following block
+    try:
+        # Gets the URL (automatically downloads the file)
+        driver.get(url)
+
+    # When timeout exceeds
+    except:
+        # Closes the driver
+        driver.close()
+
+        print('PDF extracted.')
+
+
+def extract_mother_name_from_pdf(file_path):
+    """Extracts text from a given .pdf file.
+
+    Args:
+        file_path (str): Path to the .pdf file to be extracted.
+
+    Returns:
+        The stripped mother's name or an empty string.
+
+    """
+
+    # Extracts the text from the .pdf
+    text = extract_text(file_path)
+
+    # Matches the text with an initial `filha` or `filho` keyword
+    initial_match = re.search(r'(filha|filho).+', text)
+
+    # If the text has been matched
+    if initial_match:
+        # Finds another substring that refers to the mother's name
+        mother_name = re.search(r'\se(.*),', initial_match.group())
+
+        return mother_name.group(1).strip()
+
+    return None
