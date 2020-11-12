@@ -47,6 +47,10 @@ if __name__ == '__main__':
             # Breaks the loop
             break
 
-    # Checks the integrity of a candidate
-    c.check_integrity(data['cpf'], data['nomeCompleto'], mother_name,
-                      datetime.fromtimestamp(data['dataDeNascimento']/1000).strftime('%d/%m/%Y'))
+    # Prints out meta-information about the candidate
+    # for further checking at https://consultaauxilio.dataprev.gov.br/consulta
+    print(f"CPF: {data['cpf']}")
+    print(f"Nome Completo: {data['nomeCompleto']}")
+    print(f"Nome da Mãe: {mother_name}")
+    print(f"Data de Nascimento: {datetime.fromtimestamp(data['dataDeNascimento']/1000).strftime('%d/%m/%Y')}")
+    print(f"Total de Bens: {data['cpf']}")
