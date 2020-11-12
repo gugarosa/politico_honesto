@@ -1,5 +1,6 @@
 import argparse
 
+import utils.downloader as d
 import utils.loader as l
 
 
@@ -22,5 +23,14 @@ if __name__ == '__main__':
     args = get_arguments()
     input_json = args.input_json
 
+    # Defines some common use variables
+    base_url = 'https://divulgacandcontas.tse.jus.br/'
+
     # Loads the input .json file
     data = l.load_json(input_json)
+
+    # Iterates over every possible file
+    for archive in data['arquivos']:
+        # Creates the file's URL
+        url = base_url + archive['url'] + archive['nome']
+
