@@ -1,4 +1,5 @@
 import argparse
+from datetime import datetime
 
 import utils.extractor as e
 import utils.loader as l
@@ -45,4 +46,5 @@ if __name__ == '__main__':
             # Breaks the loop
             break
 
-    print(mother_name)
+    print(data['cpf'], data['nomeCompleto'],
+          mother_name, datetime.fromtimestamp(data['dataDeNascimento']/1000).strftime('%d/%m/%Y'))
