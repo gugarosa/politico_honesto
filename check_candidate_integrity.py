@@ -1,6 +1,7 @@
 import argparse
 from datetime import datetime
 
+import utils.checker as c
 import utils.extractor as e
 import utils.loader as l
 
@@ -46,5 +47,6 @@ if __name__ == '__main__':
             # Breaks the loop
             break
 
-    print(data['cpf'], data['nomeCompleto'],
-          mother_name, datetime.fromtimestamp(data['dataDeNascimento']/1000).strftime('%d/%m/%Y'))
+    # Checks the integrity of a candidate
+    c.check_integrity(data['cpf'], data['nomeCompleto'], mother_name,
+                      datetime.fromtimestamp(data['dataDeNascimento']/1000).strftime('%d/%m/%Y'))

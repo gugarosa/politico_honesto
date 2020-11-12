@@ -93,6 +93,8 @@ def extract_mother_name_from_pdf(file_path):
 
     """
 
+    print('Trying to find mother name ...')
+
     # Extracts the text from the .pdf
     text = extract_text(file_path)
 
@@ -104,6 +106,10 @@ def extract_mother_name_from_pdf(file_path):
         # Finds another substring that refers to the mother's name
         mother_name = re.search(r'\se(.*),', initial_match.group())
 
+        print('Name has been found.')
+
         return mother_name.group(1).strip()
+
+    print('Could not find name.')
 
     return None
