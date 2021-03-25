@@ -2,7 +2,7 @@ import utils.downloader as d
 import utils.loader as l
 
 # Defines some common use variables
-url = 'http://recogna.tech/files/politico_honesto/consulta_cand_2020_BRASIL.csv'
+url = 'https://www.recogna.tech/files/politico_honesto/consulta_cand_2020_BRASIL.csv'
 file_path = 'consulta_cand_2020_BRASIL.csv'
 delimiter = ';'
 

@@ -26,13 +26,15 @@ Por favor, copie `config.ini.example` para `config.ini` e preenche a chave de AP
 
 ### Recuperação de Dados do TSE
 
-O primeiro passo é recuperar os dados de todas as candidaturas presentes e disponíveis no site do [TSE](https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_2020.zip).
+O primeiro passo é recuperar os dados de todas as candidaturas presentes e disponíveis no site do TSE. Para facilitar a vida do usuário, nós disponibilizamos este arquivo em nossa [plataforma](https://www.recogna.tech/files/politico_honesto/consulta_cand_2020_BRASIL.csv).
 
 Com o arquivo em mãos, é possível limpá-lo e utilizar apenas as informações necessárias para extrair novos dados de um candidato em particular. Tal procedimento pode ser realizado de acordo com o script a seguir:
 
 ```Python
 python clean_tse_data.py
 ```
+
+*Também disponibilizamos a versão limpa do arquivo em nossa [plataforma](https://www.recogna.tech/files/politico_honesto/clean_consulta_cand_2020_BRASIL.csv).*
 
 ### Extração de Informações do Candidato
 
