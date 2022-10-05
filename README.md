@@ -68,6 +68,6 @@ O script irá gerar as seguintes meta-informações: CPF, nome do candidato, nom
 
 ## Suporte
 
-Apesar de tentarmos realizar o nosso melhor, é inevitável que possam existir erros ou bugs. Caso você deseje reportar um bug ou problema, fale conosco! Estamos disponíveis neste mesmo repositório ou através do e-mail: gustavo.rosa@unesp.br.
+Apesar de tentarmos realizar o nosso melhor, é inevitável que possam existir erros ou bugs. Caso você deseje reportar um bug ou problema, fale conosco! Estamos disponíveis neste mesmo repositório.
 
 ---
